@@ -1,0 +1,20 @@
+<form class="box" action="/placemark/{{placemark._id}}/addstation" method="POST">
+    <label>Enter Station Details:</label>
+    <div class="field is-horizontal">
+        <div class="field-body">
+            <div class="field">
+                <input class="input" type="text" placeholder="Enter place name" name="Name">
+            </div>
+            <div class="field">
+                <input class="input" type="text" placeholder="Enter Place" name="location">
+            </div>
+            <div class="field">
+                <input class="input" type="double" placeholder="Enter amount" name="Unleaded Price">
+            </div>
+            <div class="field">
+                <input class="input" type="double" placeholder="Enter amount" name="Diesel Price">
+            </div>
+        </div>
+    </div>
+    <button class="button is-primary">Add Station</button>
+</form>

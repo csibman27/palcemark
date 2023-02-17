@@ -1,0 +1,28 @@
+<table class="table is-fullwidth">
+    <thead>
+    <tr>
+        <th>Station Name</th>
+        <th>Location Name</th>
+        <th>Unleaded price</th>
+        <th>Diesel price</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each placemark.stations}}
+        <tr>
+            <td>
+                {{station}}
+            </td>
+            <td>
+                {{location}}
+            </td>
+            <td>
+                {{unleaded}}
+            </td>
+            <td>
+                {{diesel}}
+            </td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

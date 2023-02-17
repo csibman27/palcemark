@@ -14,7 +14,7 @@ export const dashboardController = {
 
   addPlacemark: {
     handler: async function (request, h) {
-      const newPlayList = {
+      const newPlacemark = {
         title: request.payload.title,
       };
       await db.placemarkStore.addPlacemark(newPlacemark);
