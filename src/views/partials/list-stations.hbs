@@ -11,7 +11,7 @@
     {{#each placemark.stations}}
         <tr>
             <td>
-                {{station}}
+                {{title}}
             </td>
             <td>
                 {{location}}
@@ -21,6 +21,11 @@
             </td>
             <td>
                 {{diesel}}
+            </td>
+            <td>
+                <a href="/placemark/{{../placemark._id}}/deletestation/{{_id}}" class="ui icon button">
+                    <i class="fas fa-trash"></i>
+                </a>
             </td>
         </tr>
     {{/each}}

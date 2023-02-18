@@ -1,4 +1,5 @@
 import { v4 } from "uuid";
+import { stationMemStore } from "./station-mem-store.js";
 
 let placemarks = [];
 
@@ -14,10 +15,12 @@ export const placemarkMemStore = {
   },
 
   async getPlacemarkById(id) {
-    return placemarks.find((placemark) => placemark._id === id);
+    const list = placemarks.find((placemark) => placemark._id == id);
+    list.stations = await stationMemStore.getStationsByPlacemarkId(list._id);
+    return list;
   },
 
-  async getUserPlacemark(userid) {
+  async getUserPlacemarks(userid) {
     return placemarks.filter((placemark) => placemark.userid === userid);
   },
 
