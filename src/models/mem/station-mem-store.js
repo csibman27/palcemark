@@ -36,7 +36,7 @@ export const stationMemStore = {
   },
 
   async updateStation(station, updatedStation) {
-    station.name = updatedStation.name;
+    station.title = updatedStation.title;
     station.location = updatedStation.location;
     station.unleaded_price = updatedStation.unleaded_price;
     station.diesel_price = updatedStation.diesel_price;
