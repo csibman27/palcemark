@@ -25,3 +25,19 @@ export const testUsers = [
     password: "secret",
   },
 ];
+
+export const localStations = {
+  title: "Mozart Favourites",
+};
+
+export const testPlacemarks = [
+  {
+    title: "Maxoil",
+  },
+  {
+    title: "AppleGreen",
+  },
+  {
+    title: "Texaco",
+  },
+];
