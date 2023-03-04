@@ -1,6 +1,7 @@
 import { assert } from "chai";
-import { db } from "../src/models/db.js";
-import { testPlacemarks, localStations } from "./fixtures.js";
+import { db } from "../../src/models/db.js";
+import { testPlacemarks, localStations } from "../fixtures.js";
+//import { assertSubset } from "../test-utils.js";
 
 suite("Placemark Model tests", () => {
   setup(async () => {

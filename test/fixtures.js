@@ -1,3 +1,5 @@
+export const serviceUrl = "http://localhost:3000";
+
 export const maggie = {
   firstName: "Maggie",
   lastName: "Simpson",
@@ -27,7 +29,7 @@ export const testUsers = [
 ];
 
 export const localStations = {
-  title: "Mozart Favourites",
+  title: "Maxoil the long store",
 };
 
 export const testPlacemarks = [
