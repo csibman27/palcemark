@@ -2,7 +2,7 @@ import Mongoose from "mongoose";
 
 const { Schema } = Mongoose;
 
-const trackSchema = new Schema({
+const stationSchema = new Schema({
   title: String,
   location: String,
   unleaded_price: Number,
@@ -13,4 +13,4 @@ const trackSchema = new Schema({
   },
 });
 
-export const Track = Mongoose.model("Track", stationSchema);
+export const Station = Mongoose.model("Track", stationSchema);

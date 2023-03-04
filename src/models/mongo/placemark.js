@@ -10,4 +10,4 @@ const placemarkSchema = new Schema({
   },
 });
 
-export const Placemark = Mongoose.model("Placemark", placemarktSchema);
+export const Placemark = Mongoose.model("Placemark", placemarkSchema);
