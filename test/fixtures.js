@@ -28,8 +28,19 @@ export const testUsers = [
   },
 ];
 
-export const localStations = {
-  title: "Maxoil the long store",
+export const Bulls = {
+  title: "Maxoil the large station",
+};
+
+export const wideStations = {
+  title: "Applegreen",
+  location: "abbyland",
+  unleaded_price: 1.23,
+  diesel_price: 1.44,
+};
+
+export const Amarando = {
+  title: "Amaretto",
 };
 
 export const testPlacemarks = [
@@ -41,5 +52,26 @@ export const testPlacemarks = [
   },
   {
     title: "Texaco",
+  },
+];
+
+export const testStations = [
+  {
+    title: "Amaran",
+    location: "Belphi",
+    unleaded_price: 1.11,
+    diesel_price: 1.1,
+  },
+  {
+    title: "Larossmax",
+    location: "westhead",
+    unleaded_price: 1,
+    diesel_price: 0.99,
+  },
+  {
+    title: "Roll",
+    location: "westhead2",
+    unleaded_price: 1.01,
+    diesel_price: 0.98,
   },
 ];

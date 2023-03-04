@@ -1,7 +1,10 @@
 import { assert } from "chai";
 import { db } from "../../src/models/db.js";
-import { testPlacemarks, localStations } from "../fixtures.js";
-//import { assertSubset } from "../test-utils.js";
+import { testPlacemarks, Bulls } from "../fixtures.js";
+import { assertSubset } from "../test-utils.js";
+import { EventEmitter } from "events";
+
+EventEmitter.setMaxListeners(25);
 
 suite("Placemark Model tests", () => {
   setup(async () => {
@@ -14,8 +17,8 @@ suite("Placemark Model tests", () => {
   });
 
   test("create a placemark", async () => {
-    const placemark = await db.placemarkStore.addPlacemark(localStations);
-    assert.equal(localStations, placemark);
+    const placemark = await db.placemarkStore.addPlacemark(Bulls);
+    assertSubset(Bulls, placemark);
     assert.isDefined(placemark._id);
   });
 
@@ -28,9 +31,9 @@ suite("Placemark Model tests", () => {
   });
 
   test("get a placemark - success", async () => {
-    const placemark = await db.placemarkStore.addPlacemark(localStations);
+    const placemark = await db.placemarkStore.addPlacemark(Bulls);
     const returnedPlacemark = await db.placemarkStore.getPlacemarkById(placemark._id);
-    assert.equal(localStations, placemark);
+    assertSubset(Bulls, placemark);
   });
 
   test("delete One Placemark - success", async () => {

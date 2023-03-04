@@ -10,6 +10,7 @@ import { connectMongo } from "./mongo/connect.js";
 import { userMongoStore } from "./mongo/user-mongo-store.js";
 
 import { placemarkMongoStore } from "./mongo/placemark-mongo-store.js";
+import { stationMongoStore } from "./mongo/station-mongo-store.js";
 
 export const db = {
   userStore: null,
@@ -26,6 +27,7 @@ export const db = {
       case "mongo":
         this.userStore = userMongoStore;
         this.placemarkStore = placemarkMongoStore;
+        this.stationStore = stationMongoStore;
         connectMongo();
         break;
       default:

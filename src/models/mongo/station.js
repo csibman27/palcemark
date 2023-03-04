@@ -13,4 +13,4 @@ const stationSchema = new Schema({
   },
 });
 
-export const Station = Mongoose.model("Track", stationSchema);
+export const Station = Mongoose.model("Station", stationSchema);
