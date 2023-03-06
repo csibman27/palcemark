@@ -4,7 +4,7 @@ const { Schema } = Mongoose;
 
 const stationSchema = new Schema({
   title: String,
-  location: String,
+  description: String,
   unleaded_price: Number,
   diesel_price: Number,
   placemarkid: {

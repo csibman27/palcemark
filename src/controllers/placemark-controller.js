@@ -26,7 +26,7 @@ export const placemarkController = {
       const placemark = await db.placemarkStore.getPlacemarkById(request.params.id);
       const newStation = {
         title: request.payload.title,
-        location: request.payload.location,
+        description: request.payload.description,
         unleaded_price: Number(request.payload.unleaded_price),
         diesel_price: Number(request.payload.diesel_price),
       };

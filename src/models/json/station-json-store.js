@@ -44,7 +44,7 @@ export const stationJsonStore = {
 
   async updateStation(station, updatedStation) {
     station.title = updatedStation.title;
-    station.location = updatedStation.location;
+    station.description = updatedStation.description;
     station.unleaded_price = updatedStation.unleaded_price;
     station.diesel_price = updatedStation.diesel_price;
     await db.write();
