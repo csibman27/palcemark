@@ -14,7 +14,7 @@ export const UserCredentialsSpec = {
 
 export const StationSpec = {
   title: Joi.string().required(),
-  location: Joi.string().required(),
+  description: Joi.string().required(),
   unleaded_price: Joi.number().allow("").optional(),
   diesel_price: Joi.number().allow("").optional(),
 };
