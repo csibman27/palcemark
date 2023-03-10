@@ -23,7 +23,7 @@ export const webRoutes = [
   { method: "GET", path: "/dashboard", config: dashboardController.index },
   { method: "POST", path: "/dashboard/addplacemark", config: dashboardController.addPlacemark },
   { method: "GET", path: "/dashboard/deleteplacemark/{id}", config: dashboardController.deletePlacemark },
-  { method: "POST", path: "/dashboard/sortplacemark", config: dashboardController.sortPlacemark },
+  { method: "POST", path: "/dashboard/sortplacemark/{id}", config: dashboardController.sortPlacemark },
 
   { method: "GET", path: "/placemark/{id}", config: placemarkController.index },
   { method: "POST", path: "/placemark/{id}/addstation", config: placemarkController.addStation },

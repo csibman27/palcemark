@@ -38,7 +38,7 @@ export const placemarkController = {
   deleteStation: {
     handler: async function (request, h) {
       const placemark = await db.placemarkStore.getPlacemarkById(request.params.id);
-      await db.stationStore.deleteStation(request.stationid);
+      await db.stationStore.deleteStation(request.params.stationid);
       return h.redirect(`/placemark/${placemark._id}`);
     },
   },

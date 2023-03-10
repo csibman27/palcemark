@@ -1,11 +1,30 @@
-{{#each user}}
-    <div class="box box-link-hover-shadow">
-        <h3 class="title">
-            {{firstName}}
-            {{lastName}}
-            <a href="/user/deleteuser/{{_id}}" class="button">
-                <i class="fas fa-trash"></i>
-            </a>
-        </h3>
-    </div>
-{{/each}}
+<table class="table is-fullwidth">
+    <thead>
+    <tr>
+        <th>First Name</th>
+        <th>SureName</th>
+        <th>Privilege</th>
+        <th>Remove</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each user}}
+        <tr>
+            <td>
+                {{firstName}}
+            </td>
+            <td>
+                {{lastName}}
+            </td>
+            <td>
+                {{privilege}}
+            </td>
+            <td>
+                <a href="/user/deleteuser/{{_id}}" class="button">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

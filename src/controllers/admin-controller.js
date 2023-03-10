@@ -3,19 +3,12 @@ import { db } from "../models/db.js";
 export const adminController = {
   index: {
     handler: async function (request, h) {
-      const user = await db.userStore.getAllUsers();
+      const station = await db.stationStore.getAllStations();
       const viewData = {
-        title: "Users Placemark",
-        user: user,
+        title: station.title,
+        station: station,
       };
       return h.view("admin-view", viewData);
-    },
-  },
-  deleteUser: {
-    handler: async function (request, h) {
-      const user = await db.userStore.getUserById(request.params.id);
-      await db.userStore.deleteUserById(user._id);
-      return h.redirect("/dashboard");
     },
   },
 };
