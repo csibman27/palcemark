@@ -1,11 +1,9 @@
-<h2 class="title"> List of Users</h2>
-<br>
 {{#each user}}
     <div class="box box-link-hover-shadow">
         <h3 class="title">
             {{firstName}}
             {{lastName}}
-            <a href="/admin/deleteuser/{{_id}}" class="button">
+            <a href="/user/deleteuser/{{_id}}" class="button">
                 <i class="fas fa-trash"></i>
             </a>
         </h3>

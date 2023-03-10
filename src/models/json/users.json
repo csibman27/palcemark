@@ -20,6 +20,13 @@
       "email": "bart@simpson.com",
       "password": "secret",
       "_id": "0a0fd095-7c09-4954-9f93-f9b42a0f2b56"
+    },
+    {
+      "firstName": "syadmin",
+      "lastName": "admin",
+      "email": "sysadmin@admin.com",
+      "password": "secret",
+      "_id": "0a0fd095-7c09-4954-9f93-11111111111"
     }
   ]
 }

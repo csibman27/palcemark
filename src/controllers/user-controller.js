@@ -1,6 +1,6 @@
 import { db } from "../models/db.js";
 
-export const adminController = {
+export const userController = {
   index: {
     handler: async function (request, h) {
       const user = await db.userStore.getAllUsers();
@@ -8,7 +8,7 @@ export const adminController = {
         title: "Users Placemark",
         user: user,
       };
-      return h.view("admin-view", viewData);
+      return h.view("user-view", viewData);
     },
   },
   deleteUser: {

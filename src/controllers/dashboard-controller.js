@@ -15,6 +15,21 @@ export const dashboardController = {
     },
   },
 
+  sortPlacemark: {
+    handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
+      const placemarks = await db.placemarkStore.getUserPlacemarks(loggedInUser._id);
+      const sortPlacemarks = placemarks.find().sort();
+
+      const viewData = {
+        title: request.payload.title,
+        user: loggedInUser,
+        placemarks: sortPlacemarks,
+      };
+      return h.view("dashboard-view", viewData);
+    },
+  },
+
   addPlacemark: {
     validate: {
       payload: PlacemarkSpec,

@@ -2,6 +2,7 @@ import { accountsController } from "./controllers/accounts-controller.js";
 import { dashboardController } from "./controllers/dashboard-controller.js";
 import { aboutController } from "./controllers/about-controller.js";
 import { placemarkController } from "./controllers/placemark-controller.js";
+import { userController } from "./controllers/user-controller.js";
 import { adminController } from "./controllers/admin-controller.js";
 
 export const webRoutes = [
@@ -14,12 +15,15 @@ export const webRoutes = [
 
   { method: "GET", path: "/about", config: aboutController.index },
 
+  { method: "GET", path: "/user", config: userController.index },
+  { method: "GET", path: "/user/deleteuser/{id}", config: userController.deleteUser },
+
   { method: "GET", path: "/admin", config: adminController.index },
-  { method: "GET", path: "/admin/deleteuser/{id}", config: adminController.deleteUser },
 
   { method: "GET", path: "/dashboard", config: dashboardController.index },
   { method: "POST", path: "/dashboard/addplacemark", config: dashboardController.addPlacemark },
   { method: "GET", path: "/dashboard/deleteplacemark/{id}", config: dashboardController.deletePlacemark },
+  { method: "POST", path: "/dashboard/sortplacemark", config: dashboardController.sortPlacemark },
 
   { method: "GET", path: "/placemark/{id}", config: placemarkController.index },
   { method: "POST", path: "/placemark/{id}/addstation", config: placemarkController.addStation },
