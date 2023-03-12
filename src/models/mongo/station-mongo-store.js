@@ -39,7 +39,9 @@ export const stationMongoStore = {
     await Station.deleteMany({});
   },
 
-  async updateStation(station, updatedStation) {
+  async updateStation(stationid, updatedStation) {
+    const station = await Station.findOne({ _id: stationid });
+
     station.title = updatedStation.title;
     station.description = updatedStation.description;
     station.unleaded_price = updatedStation.unleaded_price;
