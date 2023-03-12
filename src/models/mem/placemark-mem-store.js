@@ -20,7 +20,7 @@ export const placemarkMemStore = {
     return list;
   },
 
-  async getUserPlacemark(userid) {
+  async getUserPlacemarks(userid) {
     return placemarks.filter((placemark) => placemark.userid === userid);
   },
 

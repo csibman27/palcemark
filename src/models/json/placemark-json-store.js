@@ -7,7 +7,7 @@ const db = new Low(new JSONFile("./src/models/json/placemarks.json"));
 db.data = { placemarks: [] };
 
 export const placemarkJsonStore = {
-  async getAllPlaylists() {
+  async getAllPlacemarks() {
     await db.read();
     return db.data.placemarks;
   },
@@ -24,7 +24,7 @@ export const placemarkJsonStore = {
     await db.read();
     let list = db.data.placemarks.find((placemark) => placemark._id === id);
     if (list) {
-      list.stations = await stationJsonStore.getStationsByPlaylistId(list._id);
+      list.stations = await stationJsonStore.getStationsByPlacemarkId(list._id);
     } else {
       list = null;
     }

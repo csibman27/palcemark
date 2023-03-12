@@ -18,7 +18,7 @@ export const stationMemStore = {
     return stations.filter((station) => station.placemarkid === id);
   },
 
-  async getStationkById(id) {
+  async getStationById(id) {
     return stations.find((station) => station._id === id);
   },
 
