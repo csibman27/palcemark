@@ -2,6 +2,9 @@
   "stations": [
     {
       "title": "Maxoil",
+      "lat": 52.1234,
+      "lng": 7.2922,
+      "category": "station only",
       "description": "Roothouse",
       "unleaded_price": 1.20,
       "diesel_price": 1.15,
@@ -10,6 +13,9 @@
     },
     {
       "title": "Texaco",
+      "lat": 53.4234,
+      "lng": 7.2022,
+      "category": "station only",
       "description": "Billing",
       "unleaded_price": 2.30,
       "diesel_price": 1.35,
@@ -18,6 +24,9 @@
     },
     {
       "title": "Shell",
+      "lat": 51.1214,
+      "lng": 8.2322,
+      "category": "station only",
       "description": "Ballyboard",
       "unleaded_price": 2.40,
       "diesel_price": 1.29,
@@ -26,6 +35,9 @@
     },
     {
       "title": "Applegreen",
+      "lat": 52.4434,
+      "lng": 7.4942,
+      "category": "station & deli",
       "description": "Downtown",
       "unleaded_price": 1.90,
       "diesel_price": 1.41,

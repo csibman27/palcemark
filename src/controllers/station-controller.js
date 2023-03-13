@@ -27,6 +27,9 @@ export const stationController = {
       const station = await db.stationStore.getStationById(request.params.stationid);
       const newStation = {
         title: request.payload.title,
+        lat: Number(request.payload.lat),
+        lng: Number(request.payload.lng),
+        category: request.payload.category,
         description: request.payload.description,
         unleaded_price: Number(request.payload.unleaded_price),
         diesel_price: Number(request.payload.diesel_price),

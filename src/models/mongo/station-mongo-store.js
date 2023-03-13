@@ -43,6 +43,9 @@ export const stationMongoStore = {
     const station = await Station.findOne({ _id: stationid });
 
     station.title = updatedStation.title;
+    station.lat = updatedStation.lat;
+    station.lng = updatedStation.lng;
+    station.category = updatedStation.category;
     station.description = updatedStation.description;
     station.unleaded_price = updatedStation.unleaded_price;
     station.diesel_price = updatedStation.diesel_price;

@@ -30,6 +30,9 @@ export const UserArray = Joi.array().items(UserSpec).label("UserArray");
 export const StationSpec = Joi.object()
   .keys({
     title: Joi.string().required().example("Amaran"),
+    lat: Joi.number().allow().optional(),
+    lng: Joi.number().allow().optional(),
+    category: Joi.string().required(),
     description: Joi.string().required().example("Belphi"),
     unleaded_price: Joi.number().allow("").optional().example(1.01),
     diesel_price: Joi.number().allow("").optional().example(0.98),
