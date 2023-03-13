@@ -13,6 +13,11 @@ export const UserSpec = Joi.object()
   })
   .label("UserDetails");
 
+export const UserSpecPlus = UserSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("UserDetailsPlus");
+
 export const UserArray = Joi.array().items(UserSpec).label("UserArray");
 
 export const UserCredentialsSpec = {
@@ -20,13 +25,41 @@ export const UserCredentialsSpec = {
   password: Joi.string().required(),
 };
 
-export const StationSpec = {
-  title: Joi.string().required(),
-  description: Joi.string().required(),
-  unleaded_price: Joi.number().allow("").optional(),
-  diesel_price: Joi.number().allow("").optional(),
-};
+export const StationSpec = Joi.object()
+  .keys({
+    title: Joi.string().required().example("Amaran"),
+    description: Joi.string().required().example("Belphi"),
+    unleaded_price: Joi.number().allow("").optional().example(1.01),
+    diesel_price: Joi.number().allow("").optional().example(0.98),
+    placemarkid: IdSpec,
+  })
+  .label("Station");
 
-export const PlacemarkSpec = {
-  title: Joi.string().required(),
-};
+export const StationSpecPlus = StationSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("StationPlus");
+
+export const StationArraySpec = Joi.array().items(StationSpecPlus).label("StationArray");
+
+export const PlacemarkSpec = Joi.object()
+  .keys({
+    title: Joi.string().required().example("Kildare"),
+    userid: IdSpec,
+    stations: StationArraySpec,
+  })
+  .label("Placemark");
+
+export const PlacemarkSpecPlus = PlacemarkSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("PlacemarkPlus");
+
+export const PlacemarkArraySpec = Joi.array().items(PlacemarkSpecPlus).label("PlacemarkArray");
+
+export const JwtAuth = Joi.object()
+  .keys({
+    success: Joi.boolean().example("true").required(),
+    token: Joi.string().example("eyJhbGciOiJND.g5YmJisIjoiaGYwNTNjAOhE.gCWGmY5-YigQw0DCBo").required(),
+  })
+  .label("JwtAuth");

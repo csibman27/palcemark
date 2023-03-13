@@ -1,9 +1,13 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
+import { IdSpec, StationSpec, StationSpecPlus, StationArraySpec } from "../models/joi-schemas.js";
+import { validationError } from "./logger.js";
 
 export const stationApi = {
   find: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const stations = await db.stationStore.getAllStations();
@@ -12,10 +16,16 @@ export const stationApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    response: { schema: StationArraySpec, failAction: validationError },
+    description: "Get all StationApi",
+    notes: "Returns all stationApi",
   },
 
   findOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     async handler(request) {
       try {
         const station = await db.stationStore.getStationById(request.params.id);
@@ -27,10 +37,17 @@ export const stationApi = {
         return Boom.serverUnavailable("No station with this id");
       }
     },
+    tags: ["api"],
+    description: "Find a Station",
+    notes: "Returns a station",
+    validate: { params: { id: IdSpec }, failAction: validationError },
+    response: { schema: StationSpecPlus, failAction: validationError },
   },
 
   create: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const station = await db.stationStore.addStation(request.params.id, request.payload);
@@ -42,10 +59,17 @@ export const stationApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Create a station",
+    notes: "Returns the newly created station",
+    validate: { payload: StationSpec },
+    response: { schema: StationSpecPlus, failAction: validationError },
   },
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         await db.stationStore.deleteAllStations();
@@ -54,10 +78,14 @@ export const stationApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Delete all stationApi",
   },
 
   deleteOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const station = await db.stationStore.getStationById(request.params.id);
@@ -70,5 +98,8 @@ export const stationApi = {
         return Boom.serverUnavailable("No Station with this id");
       }
     },
+    tags: ["api"],
+    description: "Delete a station",
+    validate: { params: { id: IdSpec }, failAction: validationError },
   },
 };

@@ -7,6 +7,11 @@ export const maggie = {
   password: "secret",
 };
 
+export const maggieCredentials = {
+  email: "maggie@simpson.com",
+  password: "secret",
+};
+
 export const testUsers = [
   {
     firstName: "Homer",
@@ -29,7 +34,7 @@ export const testUsers = [
 ];
 
 export const Bulls = {
-  title: "Maxoil the large station",
+  title: "Bulls the large station",
 };
 
 export const wideStations = {
@@ -40,18 +45,18 @@ export const wideStations = {
 };
 
 export const Amarando = {
-  title: "Amaretto",
+  title: "Amarando petrol station",
 };
 
 export const testPlacemarks = [
   {
-    title: "Maxoil",
+    title: "Waterford",
   },
   {
-    title: "AppleGreen",
+    title: "Kildare",
   },
   {
-    title: "Texaco",
+    title: "Kilarney",
   },
 ];
 
