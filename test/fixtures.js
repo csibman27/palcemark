@@ -56,7 +56,7 @@ export const testPlacemarks = [
     title: "Kildare",
   },
   {
-    title: "Kilarney",
+    title: "Killarney",
   },
 ];
 

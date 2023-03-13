@@ -1,6 +1,6 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
-import { UserCredentialsSpec, UserSpec, UserSpecPlus, IdSpec, UserArray, JwtAuth } from "../models/joi-schemas.js";
+import { UserCredentialsSpec, UserArray, UserSpec, IdSpec, UserSpecPlus, JwtAuth } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
 import { createToken } from "./jwt-utils.js";
 
@@ -18,8 +18,8 @@ export const userApi = {
       }
     },
     tags: ["api"],
-    description: "Get all userApi",
-    notes: "Returns details of all userApi",
+    description: "Get all Users Api",
+    notes: "Returns details of User Api",
     response: { schema: UserArray, failAction: validationError },
   },
 
@@ -79,7 +79,28 @@ export const userApi = {
     },
     tags: ["api"],
     description: "Delete all userApi",
-    notes: "All userApi removed from Playtime",
+    notes: "All userApi removed",
+  },
+
+  deleteOne: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const user = await db.userStore.getUserById(request.params.id);
+        if (!user) {
+          return Boom.notFound("No User with this id");
+        }
+        await db.userStore.deleteUserById(user._id);
+        return h.response().code(204);
+      } catch (err) {
+        return Boom.serverUnavailable("No User with this id");
+      }
+    },
+    tags: ["api"],
+    description: "Delete one user",
+    notes: "Removes one user",
   },
 
   authenticate: {
@@ -100,7 +121,7 @@ export const userApi = {
       }
     },
     tags: ["api"],
-    description: "Authenticate  a User",
+    description: "Authenticate a User",
     notes: "If user has valid email/password, create and return a JWT token",
     validate: { payload: UserCredentialsSpec, failAction: validationError },
     response: { schema: JwtAuth, failAction: validationError },
