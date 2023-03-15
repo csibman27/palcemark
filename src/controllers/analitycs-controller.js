@@ -1,6 +1,6 @@
 import { db } from "../models/db.js";
 
-export const adminController = {
+export const analyticsController = {
   index: {
     handler: async function (request, h) {
       const station = await db.stationStore.getAllStations();
@@ -8,7 +8,7 @@ export const adminController = {
         title: station.title,
         station: station,
       };
-      return h.view("admin-view", viewData);
+      return h.view("analytics-view", viewData);
     },
   },
 };

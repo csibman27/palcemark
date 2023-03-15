@@ -3,7 +3,7 @@ import { dashboardController } from "./controllers/dashboard-controller.js";
 import { aboutController } from "./controllers/about-controller.js";
 import { placemarkController } from "./controllers/placemark-controller.js";
 import { userController } from "./controllers/user-controller.js";
-import { adminController } from "./controllers/admin-controller.js";
+import { analyticsController } from "./controllers/analitycs-controller.js";
 import { stationController } from "./controllers/station-controller.js";
 
 export const webRoutes = [
@@ -19,7 +19,7 @@ export const webRoutes = [
   { method: "GET", path: "/user", config: userController.index },
   { method: "GET", path: "/user/deleteuser/{id}", config: userController.deleteUser },
 
-  { method: "GET", path: "/admin", config: adminController.index },
+  { method: "GET", path: "/analytics", config: analyticsController.index },
 
   { method: "GET", path: "/dashboard", config: dashboardController.index },
   { method: "POST", path: "/dashboard/addplacemark", config: dashboardController.addPlacemark },
