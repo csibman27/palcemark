@@ -34,4 +34,6 @@ export const webRoutes = [
   { method: "POST", path: "/station/{id}/updatestation/{stationid}", config: stationController.update },
 
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } },
+
+  { method: "POST", path: "/dashboard/addmessage", config: dashboardController.addMessage },
 ];

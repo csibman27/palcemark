@@ -1,5 +1,6 @@
 import { PlacemarkSpec } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
+import { messageJsonStore } from "../models/json/message-store.js";
 
 export const dashboardController = {
   index: {
@@ -52,6 +53,18 @@ export const dashboardController = {
     handler: async function (request, h) {
       const placemark = await db.placemarkStore.getPlacemarkById(request.params.id);
       await db.placemarkStore.deletePlacemarkById(placemark._id);
+      return h.redirect("/dashboard");
+    },
+  },
+
+  addMessage: {
+    handler: async function (request, h) {
+      //const message = request.body.message;
+      const newMessage = {
+        message: request.payload.message,
+      };
+      //await messageJsonStore.addMessage(newMessage);
+      await db.messageStore.addMessage(newMessage);
       return h.redirect("/dashboard");
     },
   },

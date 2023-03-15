@@ -12,10 +12,14 @@ import { userMongoStore } from "./mongo/user-mongo-store.js";
 import { placemarkMongoStore } from "./mongo/placemark-mongo-store.js";
 import { stationMongoStore } from "./mongo/station-mongo-store.js";
 
+import { messageMongoStore } from "./mongo/message-mongo-store.js";
+import { messageJsonStore } from "./json/message-store.js";
+
 export const db = {
   userStore: null,
   placemarkStore: null,
   stationStore: null,
+  messageStore: null,
 
   init(storeType) {
     switch (storeType) {
@@ -23,17 +27,20 @@ export const db = {
         this.userStore = userJsonStore;
         this.placemarkStore = placemarkJsonStore;
         this.stationStore = stationJsonStore;
+        this.messageStore = messageJsonStore;
         break;
       case "mongo":
         this.userStore = userMongoStore;
         this.placemarkStore = placemarkMongoStore;
         this.stationStore = stationMongoStore;
+        this.messageStore = messageMongoStore;
         connectMongo();
         break;
       default:
         this.userStore = userMemStore;
         this.placemarkStore = placemarkMemStore;
         this.stationStore = stationMemStore;
+        this.messageStore = messageMongoStore;
     }
   },
 };
