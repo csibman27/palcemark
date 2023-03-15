@@ -3,11 +3,19 @@
 <section class="hero">
     <div class="hero-body has-text-centered">
         <p class="title ">
-            Placemark : Organise and manage your places </p>
+            Placemark : Please find us on map </p>
         <p class="box">
-            <i class="fas fa-music fa-10x" style="color:darkorange"></i>
-            <i class="fas fa-plus fa-4x" style="color:deepskyblue"></i>
-            <i class="fas fa-headphones fa-10x" style="color:gold"></i>
+        <iframe
+                width="600"
+                height="450"
+                style="border:4px"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJMUHdEBPEQkgR_nw_8dzwQkA&key={{process.env.API_KEY}}">
+    &q=Space+Needle,Seattle+WA">
+        </iframe>
+
         </p>
     </div>
 </section>
