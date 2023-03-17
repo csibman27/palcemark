@@ -36,6 +36,22 @@ export const placemarkJsonStore = {
     return db.data.placemarks.filter((placemark) => placemark.userid === userid);
   },
 
+  async sortUserPlacemarks(userid) {
+    await db.read();
+
+    return db.data.placemarks
+      .filter((placemark) => placemark.userid === userid)
+      .sort(function (a, b) {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+        return 0;
+      });
+  },
+
   async deletePlacemarkById(id) {
     await db.read();
     const index = db.data.placemarks.findIndex((placemark) => placemark._id === id);

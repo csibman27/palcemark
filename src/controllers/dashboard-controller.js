@@ -2,6 +2,8 @@ import { PlacemarkSpec } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
 import { messageJsonStore } from "../models/json/message-store.js";
 
+// order an array of objects with name
+
 export const dashboardController = {
   index: {
     handler: async function (request, h) {
@@ -19,12 +21,12 @@ export const dashboardController = {
   sortPlacemark: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      const sortPlacemarks = await db.placemarkStore.getUserPlacemarks(loggedInUser._id).sort();
+      const placemarks = await db.placemarkStore.sortUserPlacemarks(loggedInUser._id);
 
       const viewData = {
         title: request.payload.title,
         user: loggedInUser,
-        placemarks: sortPlacemarks,
+        placemarks: placemarks,
       };
       return h.view("dashboard-view", viewData);
     },

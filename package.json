@@ -36,6 +36,7 @@
     "prettier": "^2.8.3"
   },
   "dependencies": {
+    "@antoniogiordano/hacli": "^1.0.2",
     "@hapi/boom": "^10.0.1",
     "@hapi/cookie": "^12.0.0",
     "@hapi/hapi": "^21.2.0",
@@ -45,11 +46,13 @@
     "googleapis": "^113.0.0",
     "handlebars": "^4.7.7",
     "hapi-auth-jwt2": "^10.4.0",
+    "hapi-error": "^3.0.0",
     "hapi-swagger": "^16.0.1",
     "joi": "^17.7.0",
     "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.21",
     "lowdb": "^5.0.5",
+    "mais-mongoose-seeder": "^1.0.7",
     "mongoose": "^6.9.2",
     "uuid": "^9.0.0"
   }

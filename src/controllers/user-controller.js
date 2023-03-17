@@ -5,7 +5,7 @@ export const userController = {
     handler: async function (request, h) {
       const user = await db.userStore.getAllUsers();
       const viewData = {
-        title: "Users Placemark",
+        title: "Users",
         user: user,
       };
       return h.view("user-view", viewData);
