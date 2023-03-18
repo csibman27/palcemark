@@ -1,5 +1,4 @@
 {{> menu active="about"}}
-
 <section class="hero">
     <div class="hero-body has-text-centered">
         <p class="title ">
@@ -16,12 +15,6 @@
         </iframe>
         </p>
     </div>
-    <section class="ui raised two column grid segment">
-        <section class="column">
-            {{> add-message }}
-        </section>
-        <section class="column">
-            {{> list-messages }}
-        </section>
-    </section>
+    {{> add-message }}
+    {{> list-messages }}
 </section>
