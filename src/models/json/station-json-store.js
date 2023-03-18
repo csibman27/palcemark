@@ -11,6 +11,11 @@ export const stationJsonStore = {
     return db.data.stations;
   },
 
+  async getUserStations(userid) {
+    await db.read();
+    return db.data.stations.filter((station) => station.userid === userid);
+  },
+
   async addStation(placemarkId, station) {
     await db.read();
     station._id = v4();

@@ -24,7 +24,12 @@ export const seedData = {
       lastName: "1",
       email: "1@1.com",
       password: "1",
-      privilege: "ADMIN",
+    },
+    test: {
+      firstName: "test",
+      lastName: "test",
+      email: "test@test.com",
+      password: "test",
     },
   },
   placemarks: {

@@ -8,8 +8,9 @@ export const placemarkMemStore = {
     return placemarks;
   },
 
-  async addPlacemark(placemark) {
+  async addPlacemark(stationId, placemark) {
     placemark._id = v4();
+    placemark.stationid = stationId;
     placemarks.push(placemark);
     return placemark;
   },
@@ -18,6 +19,10 @@ export const placemarkMemStore = {
     const list = placemarks.find((placemark) => placemark._id == id);
     list.stations = await stationMemStore.getStationsByPlacemarkId(list._id);
     return list;
+  },
+
+  async getPlacemarksByStationId(id) {
+    return placemarks.filter((station) => station.stationid === id);
   },
 
   async getUserPlacemarks(userid) {

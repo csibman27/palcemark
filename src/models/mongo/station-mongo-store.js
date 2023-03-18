@@ -7,6 +7,11 @@ export const stationMongoStore = {
     return stations;
   },
 
+  async getUserStations(id) {
+    const station = await Station.find({ userid: id }).lean();
+    return station;
+  },
+
   async addStation(placemarkId, station) {
     station.placemarkid = placemarkId;
     const newStation = new Station(station);

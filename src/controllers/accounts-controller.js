@@ -1,4 +1,4 @@
-import { UserSpec, UserCredentialsSpec } from "../models/joi-schemas.js";
+import { UserSpec, UserCredentialsSpec, UserSpecPlus } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
 
 export const accountsController = {
@@ -32,7 +32,7 @@ export const accountsController = {
   showLogin: {
     auth: false,
     handler: function (request, h) {
-      return h.view("login-view", { title: "Login to Playlist" });
+      return h.view("login-view", { title: "Login to Placemark for Petrol Stations" });
     },
   },
   login: {
@@ -67,5 +67,61 @@ export const accountsController = {
       return { isValid: false };
     }
     return { isValid: true, credentials: user };
+  },
+
+  loggedInUserDetails: {
+    handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
+      const user = await db.userStore.getUserById(loggedInUser._id);
+      const viewData = {
+        title: "User Account",
+        user: user,
+      };
+      return h.view("user-view", viewData);
+    },
+  },
+
+  updateLoggedInUser: {
+    validate: {
+      payload: UserSpecPlus,
+      options: { abortEarly: false },
+      failAction: function (request, h, error) {
+        return h.view("user-view", { title: "Error", errors: error.details }).takeover.code(400);
+      },
+    },
+    handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
+      const updatedUser = {
+        firstName: request.payload.firstName,
+        lastName: request.payload.lastName,
+        email: request.payload.email,
+        password: request.payload.password,
+      };
+      try {
+        await db.userStore.updateUser(loggedInUser._id, updatedUser);
+      } catch (error) {
+        console.log(error);
+      }
+      return h.view("login-view");
+    },
+  },
+
+  deleteUserAccount: {
+    handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
+      let userStations = [];
+      userStations = await db.stationStore.getUserStations(loggedInUser._id);
+      for (let i = 0; i < userStations.length; i += 1) {
+        let userPlacemarks = [];
+
+        userPlacemarks = await db.placemarkStore.getPlacemarksByStationId(userStations[i]._id);
+        for (let k = 0; k < userPlacemarks.length; k += 1) {
+          await db.placemarkStore.deletePlacemarkById(userPlacemarks[k]._id);
+        }
+        await db.stationStore.deleteStation(userStations[i]._id);
+      }
+      await db.userStore.deleteUserById(loggedInUser._id);
+      return h.redirect("/");
+    },
   },
 };

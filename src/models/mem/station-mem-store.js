@@ -8,6 +8,10 @@ export const stationMemStore = {
     return stations;
   },
 
+  async getUserStations(userid) {
+    return stations.filter((station) => station.userid === userid);
+  },
+
   async addStation(placemarkId, station) {
     station._id = v4();
     station.placemarkid = placemarkId;
