@@ -3,7 +3,7 @@ import { dashboardController } from "./controllers/dashboard-controller.js";
 import { aboutController } from "./controllers/about-controller.js";
 import { placemarkController } from "./controllers/placemark-controller.js";
 import { userController } from "./controllers/user-controller.js";
-import { analyticsController } from "./controllers/analitycs-controller.js";
+import { analyticsController } from "./controllers/analytics-controller.js";
 import { stationController } from "./controllers/station-controller.js";
 
 export const webRoutes = [

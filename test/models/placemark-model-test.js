@@ -23,11 +23,11 @@ suite("Placemark Model tests", () => {
   });
 
   test("delete all placemarks", async () => {
-    let returnedPlacemarks = await db.placemarkStore.getAllPlacemarks();
-    assert.equal(returnedPlacemarks.length, 3);
+    const placemarks = await db.placemarkStore.getAllPlacemarks();
+    assert.equal(testPlacemarks.length, placemarks.length);
     await db.placemarkStore.deleteAllPlacemarks();
-    returnedPlacemarks = await db.placemarkStore.getAllPlacemarks();
-    assert.equal(returnedPlacemarks.length, 0);
+    const returnedPlacemarks = await db.placemarkStore.getAllPlacemarks();
+    assert.equal(0, returnedPlacemarks.length);
   });
 
   test("get a placemark - success", async () => {

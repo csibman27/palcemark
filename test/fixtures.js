@@ -1,5 +1,6 @@
 export const serviceUrl = "http://localhost:3000";
 
+// sign up form test
 export const maggie = {
   firstName: "Maggie",
   lastName: "Simpson",
@@ -12,6 +13,7 @@ export const maggieCredentials = {
   password: "secret",
 };
 
+// all users test
 export const testUsers = [
   {
     firstName: "Homer",
@@ -32,9 +34,9 @@ export const testUsers = [
     password: "secret",
   },
 ];
-
+// station test
 export const Bulls = {
-  title: "Bulls the large station",
+  title: "Kildare",
 };
 
 export const wideStations = {

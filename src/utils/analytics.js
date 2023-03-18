@@ -1,27 +1,30 @@
-import { Station } from "./station.js";
+import { db } from "../models/db.js";
 
-getMinUnleadedPrice: {
-  if (Station.title.length > 0) {
-    let minPrice = Station.unleaded_price[0].unleaded_price;
-    for (let i = 0; i < Station.title.length; i++) {
-      console.log(Station.title[i].unleaded_price);
-      if (Station.unleaded_price[i].unleaded_price <= minPrice) {
-        minPrice = Station.unleaded_price[i].unleaded_price;
+export const analytics = {
+  async getMinUnleadedPrice() {
+    const stations = await db.stationStore.getAllStations();
+    console.log(stations);
+    if (stations.length > 0) {
+      let minPrice = stations.unleaded_price[1];
+      for (let i = 0; i < stations.length; i++) {
+        if (stations.unleaded_price[i] <= minPrice) {
+          minPrice = stations.unleaded_price[i].unleaded_price;
+        }
       }
+      return minPrice;
     }
-    return minPrice;
-  }
-}
-
-getMaxUnleadedPrice: {
-  if (Station.title.length > 0) {
-    let maxPrice = Station.unleaded_price[0].unleaded_price;
-    for (let i = 0; i < Station.title.length; i++) {
-      console.log(Station.title[i].unleaded_price);
-      if (Station.unleaded_price[i].unleaded_price >= maxPrice) {
-        maxPrice = Station.unleaded_price[i].unleaded_price;
+  },
+  async getMaxUnleadedPrice() {
+    const stations = await db.stationStore.getAllStations();
+    console.log(stations);
+    if (stations.length > 0) {
+      let maxPrice = stations.unleaded_price[0].unleaded_price;
+      for (let i = 0; i < stations.title.length; i++) {
+        if (stations.unleaded_price[i].unleaded_price >= minPrice) {
+          maxPrice = stations.unleaded_price[i].unleaded_price;
+        }
       }
+      return maxPrice;
     }
-    return maxPrice;
-  }
-}
+  },
+};
