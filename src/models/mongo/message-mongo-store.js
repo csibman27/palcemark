@@ -2,8 +2,8 @@ import { Message } from "./message.js";
 
 export const messageMongoStore = {
   async getAllMessages() {
-    const messages = await Message.find().lean();
-    return messages;
+    const message = await Message.find().lean();
+    return message;
   },
 
   async getMessageById(id) {
@@ -14,11 +14,10 @@ export const messageMongoStore = {
     return null;
   },
 
-  async addMessage(message) {
+  async addMessages(message) {
     const newMessage = new Message(message);
     const messageObj = await newMessage.save();
-    const m = await this.getMessageById(messageObj._id);
-    return m;
+    return this.getMessageById(messageObj._id);
   },
 
   async deleteAll() {

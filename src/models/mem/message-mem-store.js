@@ -1,5 +1,4 @@
 import { v4 } from "uuid";
-import { messageMemStore } from "./message-mem-store.js";
 
 let messages = [];
 

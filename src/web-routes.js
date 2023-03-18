@@ -15,6 +15,7 @@ export const webRoutes = [
   { method: "POST", path: "/authenticate", config: accountsController.login },
 
   { method: "GET", path: "/about", config: aboutController.index },
+  { method: "POST", path: "/about/addmessage", config: aboutController.addMessage },
 
   { method: "GET", path: "/user", config: userController.index },
   { method: "GET", path: "/user/deleteuser/{id}", config: userController.deleteUser },
@@ -34,6 +35,4 @@ export const webRoutes = [
   { method: "POST", path: "/station/{id}/updatestation/{stationid}", config: stationController.update },
 
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } },
-
-  { method: "POST", path: "/dashboard/addmessage", config: dashboardController.addMessage },
 ];

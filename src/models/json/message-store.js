@@ -11,7 +11,7 @@ export const messageJsonStore = {
     return db.data.messages;
   },
 
-  async addMessage(message) {
+  async addMessages(message) {
     await db.read;
     message._id = v4();
     db.data.messages.push(message);

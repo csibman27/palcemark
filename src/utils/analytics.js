@@ -43,4 +43,9 @@ export const analytics = {
       return minDieselPrice;
     }
   },
+  async sortPlacemarks() {
+    const placemarks = await db.placemarkStore.getUserPlacemarks();
+    const sortedPlacemarks = placemarks.sort();
+    return sortedPlacemarks;
+  },
 };

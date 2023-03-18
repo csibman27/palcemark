@@ -77,4 +77,10 @@ export const seedData = {
       placemarkid: "->placemarks.Kilkenny",
     },
   },
+  messages: {
+    _model: "Message",
+    message_1: {
+      messageText: "test message from a community user",
+    },
+  },
 };

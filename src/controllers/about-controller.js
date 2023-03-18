@@ -1,16 +1,25 @@
 import { db } from "../models/db.js";
 
-function myFunction() {
-  document.getElementById("demo").innerHTML = "Paragraph changed.";
-}
-
 export const aboutController = {
   index: {
-    handler: function (request, h) {
+    handler: async function (request, h) {
+      const message = await db.messageStore.getAllMessages();
       const viewData = {
         title: "About Placemark",
+        message: message,
       };
       return h.view("about-view", viewData);
+    },
+  },
+  addMessage: {
+    handler: async function (request, h) {
+      //const message = request.body.message;
+      const newMessage = {
+        title: "Message store",
+        messageText: request.payload.messageText,
+      };
+      await db.messageStore.addMessages(newMessage);
+      return h.redirect("/about");
     },
   },
 };
