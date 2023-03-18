@@ -6,13 +6,20 @@ export const analyticsController = {
     handler: async function (request, h) {
       const station = await db.stationStore.getAllStations();
 
-      const stations = await db.stationStore.getAllStations();
-      const minUnleadedPrice = await analytics.getMinUnleadedPrice();
+      const totalPlacemarks = await analytics.getTotalPlacemarks();
+      const totalStations = await analytics.getTotalStations();
+      const totalUsers = await analytics.getTotalUsers();
+      const minPetrolPrice = await analytics.getCheapestPetrolPrice();
+      const minDieselPrice = await analytics.getCheapestDieselPrice();
 
       const viewData = {
         title: station.title,
         station: station,
-        minUnleadedPrice,
+        totalPlacemarks,
+        totalStations,
+        totalUsers,
+        minPetrolPrice,
+        minDieselPrice,
       };
       return h.view("analytics-view", viewData);
     },

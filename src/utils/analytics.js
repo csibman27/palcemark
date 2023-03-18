@@ -1,30 +1,46 @@
 import { db } from "../models/db.js";
 
 export const analytics = {
-  async getMinUnleadedPrice() {
+  async getTotalPlacemarks() {
+    const placemarks = await db.placemarkStore.getAllPlacemarks();
+    const totalPlacemarks = placemarks.length;
+    return totalPlacemarks;
+  },
+
+  async getTotalStations() {
     const stations = await db.stationStore.getAllStations();
-    console.log(stations);
+    const totalStations = stations.length;
+    return totalStations;
+  },
+
+  async getTotalUsers() {
+    const users = await db.userStore.getAllUsers();
+    const totalUsers = users.length;
+    return totalUsers;
+  },
+
+  async getCheapestPetrolPrice() {
+    const stations = await db.stationStore.getAllStations();
     if (stations.length > 0) {
-      let minPrice = stations.unleaded_price[1];
+      let minPetrolPrice = stations[0].unleaded_price;
       for (let i = 0; i < stations.length; i++) {
-        if (stations.unleaded_price[i] <= minPrice) {
-          minPrice = stations.unleaded_price[i].unleaded_price;
+        if (stations[i].unleaded_price <= minPetrolPrice) {
+          minPetrolPrice = stations[i].unleaded_price;
         }
       }
-      return minPrice;
+      return minPetrolPrice;
     }
   },
-  async getMaxUnleadedPrice() {
+  async getCheapestDieselPrice() {
     const stations = await db.stationStore.getAllStations();
-    console.log(stations);
     if (stations.length > 0) {
-      let maxPrice = stations.unleaded_price[0].unleaded_price;
-      for (let i = 0; i < stations.title.length; i++) {
-        if (stations.unleaded_price[i].unleaded_price >= minPrice) {
-          maxPrice = stations.unleaded_price[i].unleaded_price;
+      let minDieselPrice = stations[0].diesel_price;
+      for (let i = 0; i < stations.length; i++) {
+        if (stations[i].diesel_price <= minDieselPrice) {
+          minDieselPrice = stations[i].diesel_price;
         }
       }
-      return maxPrice;
+      return minDieselPrice;
     }
   },
 };

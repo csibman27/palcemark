@@ -1,34 +1,32 @@
-<p>Test in list-station-analytics</p>
+<p>########### Test of mixed analytics #########</p>
 
 <table class="table is-fullwidth">
     <thead>
     <tr>
-        <th>Station Name</th>
-        <th>Lowest Unleaded price</th>
-        <th>Highest Unleaded price</th>
-        <th>Lowest Diesel price</th>
-        <th>Highest Diesel price</th>
+        <th>All placemarks registered</th>
+        <th>All stations registered</th>
+        <th>All user accounts</th>
+        <th>Lowest Unleaded Price</th>
+        <th>Lowest Diesel Price</th>
     </tr>
     </thead>
     <tbody>
-    {{#each station}}
         <tr>
             <td>
-                {{title}}
+                {{totalPlacemarks}}
             </td>
             <td>
-                {{unleaded_price}}
+                {{totalStations}}
             </td>
             <td>
-                {{unleaded_price}}
+                {{totalUsers}}
             </td>
             <td>
-                {{diesel_price}}
+                {{minPetrolPrice}}
             </td>
             <td>
-                {{diesel_price}}
+                {{minDieselPrice}}
             </td>
         </tr>
-    {{/each}}
     </tbody>
 </table>
