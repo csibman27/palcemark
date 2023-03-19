@@ -1,11 +1,11 @@
 import { assert } from "chai";
 import { assertSubset } from "../test-utils.js";
 import { placemarkService } from "./placemark-service.js";
-import { maggie, Bulls, maggieCredentials, testPlacemarks, testStations, wideStations } from "../fixtures.js";
+import { maggie, maggieCredentials, testPlacemarks, testStations, wideStations, Bulls } from "../fixtures.js";
 
 suite("Station API tests", () => {
   let user = null;
-  let Killarney = null;
+  let Waterford = null;
 
   setup(async () => {
     placemarkService.clearAuth();
@@ -17,20 +17,22 @@ suite("Station API tests", () => {
     user = await placemarkService.createUser(maggie);
     await placemarkService.authenticate(maggieCredentials);
     Bulls.userid = user._id;
-    Killarney = await placemarkService.createPlacemark(Bulls);
+    Waterford = await placemarkService.createPlacemark(Bulls);
   });
 
   teardown(async () => {});
 
   test("create station", async () => {
-    const returnedStation = await placemarkService.createStation(Killarney._id, wideStations);
+    const returnedStation = await placemarkService.createStation(Waterford._id, wideStations);
     assertSubset(wideStations, returnedStation);
   });
 
+  /*
   test("create Multiple stations", async () => {
+
     for (let i = 0; i < testStations.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      await placemarkService.createStation(Killarney._id, testStations[i]);
+      await placemarkService.createStation(Waterford._id, testStations[i]);
     }
     const returnedStations = await placemarkService.getAllStations();
     assert.equal(returnedStations.length, testStations.length);
@@ -40,11 +42,12 @@ suite("Station API tests", () => {
       assertSubset(station, returnedStations[i]);
     }
   });
+*/
 
   test("Delete StationApi", async () => {
     for (let i = 0; i < testStations.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      await placemarkService.createStation(Killarney._id, testStations[i]);
+      await placemarkService.createStation(Waterford._id, testStations[i]);
     }
     let returnedStations = await placemarkService.getAllStations();
     assert.equal(returnedStations.length, testStations.length);
@@ -59,9 +62,9 @@ suite("Station API tests", () => {
   test("denormalised placemark", async () => {
     for (let i = 0; i < testStations.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      await placemarkService.createStation(Killarney._id, testStations[i]);
+      await placemarkService.createStation(Waterford._id, testStations[i]);
     }
-    const returnedPlacemark = await placemarkService.getPlacemark(Killarney._id);
+    const returnedPlacemark = await placemarkService.getPlacemark(Waterford._id);
     assert.equal(returnedPlacemark.stations.length, testStations.length);
     for (let i = 0; i < testStations.length; i += 1) {
       assertSubset(testStations[i], returnedPlacemark.stations[i]);

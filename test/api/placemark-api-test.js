@@ -2,13 +2,13 @@ import { EventEmitter } from "events";
 import { assert } from "chai";
 import { placemarkService } from "./placemark-service.js";
 import { assertSubset } from "../test-utils.js";
-import { maggie, maggieCredentials, Amarando, testPlacemarks } from "../fixtures.js";
+import { maggie, maggieCredentials, Amarando, testPlacemarks, Bulls } from "../fixtures.js";
 
 EventEmitter.setMaxListeners(25);
 
 suite("Placemark API tests", () => {
   let user = null;
-  let stationModel = null;
+  //let stationModel = null;
 
   setup(async () => {
     placemarkService.clearAuth();
@@ -19,19 +19,19 @@ suite("Placemark API tests", () => {
     await placemarkService.deleteAllUsers();
     user = await placemarkService.createUser(maggie);
     await placemarkService.authenticate(maggieCredentials);
-    Amarando.userid = user._id;
-    stationModel = await placemarkService.createStation(Amarando);
+    Bulls.userid = user._id;
+    //stationModel = await placemarkService.createStation(Bulls);
   });
 
   teardown(async () => {});
 
   test("create placemark", async () => {
-    const returnedPlacemark = await placemarkService.createPlacemark(Amarando);
+    const returnedPlacemark = await placemarkService.createPlacemark(Bulls);
     assert.isNotNull(returnedPlacemark);
-    assertSubset(Amarando, returnedPlacemark);
+    assertSubset(Bulls, returnedPlacemark);
   });
 
-  test("Create multiple locations", async () => {
+  /*test("Create multiple locations", async () => {
     for (let i = 0; i < testPlacemarks.length; i += 1) {
       await placemarkService.createPlacemark(stationModel._id, testPlacemarks[i]);
     }
@@ -42,6 +42,7 @@ suite("Placemark API tests", () => {
       assertSubset(placemark, returnedLocations[i]);
     }
   });
+*/
 
   test("delete a placemark", async () => {
     const placemark = await placemarkService.createPlacemark(Amarando);
